@@ -24,7 +24,6 @@ def send(msg, chat_id=os.environ['CHANNEL'], token=os.environ['TOKEN']):
     bot.sendMessage(chat_id=chat_id, text=msg)
 
 while True:
-    time.sleep(os.environ['REFRESH_TIME'])
     try:
         data = requests.get(os.environ['RSS_FEED'])
         posts = json.loads(data._content)
@@ -43,3 +42,4 @@ while True:
             save()
     except:
         pass
+    time.sleep(os.environ['REFRESH_TIME'])

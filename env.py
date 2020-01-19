@@ -1,2 +1,2 @@
-CHANNEL = '@binarytest'
-REFRESH_TIME = 10
+CHANNEL = '@binarycoffeedev'
+REFRESH_TIME = 60

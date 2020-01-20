@@ -1,6 +1,6 @@
 # Binary Coffee Bot
 
-**Telegram** bot that publishes the latest articles from our [blog](binary-coffee.dev) to our [Telegram channel](https://t.me/binarycoffeedev). If you have a blog and want to send the posts automatically to a telegram channel you can use this bot.
+**Telegram** bot that publishes the latest articles from our [blog](https://binary-coffee.dev) to our [Telegram channel](https://t.me/binarycoffeedev). If you have a blog and want to send the posts automatically to a telegram channel you can use this bot.
 
 1. Clone ths repo: `git clone https://github.com/dcs-community/binarycoffee_bot.git`
 2. Create enviroment: `virtualenv -p python3 env`

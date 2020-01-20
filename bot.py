@@ -1,4 +1,4 @@
-import telegram
+from social import Telegram
 import os
 import time
 import requests
@@ -6,7 +6,7 @@ import json
 
 REFRESH_TIME = 60
 
-def load():
+def load_data():
     file = open('data.json', 'r')
     data = file.read().replace("'", '"')
     ret = []
@@ -15,15 +15,12 @@ def load():
     file.close()
     return ret
 
-last_posts = load()
-
 def save():
     with open('data.json', 'w+') as database:
         database.write(str(last_posts))
 
-def send(msg, chat_id=os.environ['CHANNEL'], token=os.environ['TOKEN']):
-    bot = telegram.Bot(token=token)
-    bot.sendMessage(chat_id=chat_id, text=msg)
+last_posts = load_data()
+telegram_channel = Telegram()
 
 while True:
     try:
@@ -32,12 +29,12 @@ while True:
         
         if last_posts == []:
             for i in posts['items']:
-                send('{}\n{}'.format(i['summary'], i['url']))
+                telegram_channel.post('{}\n{}'.format(i['summary'], i['url']))
         
         elif posts != last_posts:
             for i in posts['items']:
                 if i not in last_posts['items']:
-                    send('{}\n{}'.format(i['summary'], i['url']))
+                    telegram_channel.post('{}\n{}'.format(i['summary'], i['url']))
         
         if posts != last_posts:
             last_posts = posts

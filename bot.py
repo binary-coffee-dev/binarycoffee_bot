@@ -1,9 +1,10 @@
-from env import CHANNEL, REFRESH_TIME
 import telegram
 import os
 import time
 import requests
 import json
+
+REFRESH_TIME = 60
 
 def load():
     file = open('data.json', 'r')
@@ -20,7 +21,7 @@ def save():
     with open('data.json', 'w+') as database:
         database.write(str(last_posts))
 
-def send(msg, chat_id=CHANNEL, token=os.environ['TOKEN']):
+def send(msg, chat_id=os.environ['CHANNEL'], token=os.environ['TOKEN']):
     bot = telegram.Bot(token=token)
     bot.sendMessage(chat_id=chat_id, text=msg)
 
@@ -43,4 +44,5 @@ while True:
             save()
     except:
         pass
+    
     time.sleep(REFRESH_TIME)

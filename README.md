@@ -9,6 +9,7 @@
     * `CHANNEL`: your channel user **@channel**
     * `TOKEN`: your bot token, you can see [this post](https://binary-coffee.dev/post/como-hacer-un-bot-de-telegram-desde-cero-con-python)
     * `RSS_FEED`: Url of a JSON Feed of your blog.
-5. Finally run `python bot.py`
+5. Install packages: `pip install -r requirements.txt`
+6. Finally run `python bot.py`
 
 You can also deploy it to Heroku, see [this post](https://binary-coffee.dev/post/aprende-a-desplegar-un-bot-de-telegram-en-heroku) for help.

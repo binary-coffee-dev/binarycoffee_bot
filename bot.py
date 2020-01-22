@@ -1,4 +1,4 @@
-from social import Telegram, Facebook
+from social import Telegram
 import os
 import time
 import requests
@@ -21,11 +21,9 @@ def save():
 
 last_posts = load_data()
 telegram_channel = Telegram()
-facebook_page = Facebook()
 
 def post(msg):
     telegram_channel.post(msg)    
-    facebook_page.post(msg)
 
 while True:
     try:

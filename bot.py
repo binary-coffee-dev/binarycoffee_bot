@@ -7,12 +7,17 @@ import json
 REFRESH_TIME = 60
 
 def load_data():
-    file = open('data.json', 'r')
-    data = file.read().replace("'", '"')
-    ret = []
-    if len(data) > 0:
-        ret = json.loads(data)
+    try:
+        file = open('data.json', 'r')
+        data = file.read().replace("'", '"')
+        if len(data) > 0:
+            ret = json.loads(data)
     file.close()
+    except:
+        file = open('data.json', 'w+')
+        file.close()
+    ret = []
+    
     return ret
 
 def save():

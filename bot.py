@@ -12,7 +12,7 @@ def load_data():
         data = file.read().replace("'", '"')
         if len(data) > 0:
             ret = json.loads(data)
-    file.close()
+        file.close()
     except:
         file = open('data.json', 'w+')
         file.close()

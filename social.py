@@ -1,6 +1,5 @@
 import os
 import telegram
-import tweepy 
 from facepy import GraphAPI
 
 class Telegram:

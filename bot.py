@@ -29,6 +29,8 @@ while True:
     new_posts = data_adapter.add_and_get_new_items(items=content['items'])
     if len(new_posts) > 0:
         for i in new_posts:
-            telegram_channel.post('{}\n{}'.format(i['summary'], i['url']))
+            # toDo: remove this when backend be fixed
+            url = i['url'].replace('api.binary-coffee.dev', 'binary-coffee.dev')
+            telegram_channel.post('{}\n{}'.format(i['summary'], url))
 
     time.sleep(REFRESH_TIME)

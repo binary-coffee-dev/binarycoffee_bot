@@ -20,7 +20,9 @@ class JsonAdapter(DataAdapter):
             it = self.data[i]
             self.data_map[it['id']] = i
 
-    def add_and_get_new_items(self, items=[]):
+    def add_and_get_new_items(self, items=None):
+        if items is None:
+            items = []
         new_items = []
         for it in items:
             if self.data_map.get(it['id'], -1) == -1:

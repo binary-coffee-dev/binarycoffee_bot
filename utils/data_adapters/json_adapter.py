@@ -31,6 +31,7 @@ class JsonAdapter(DataAdapter):
         if len(new_items) > 0:
             self.calculate_data_map()
             self.save_data()
+        new_items.sort(key=lambda item: item['date_modified'], reverse=False)
         return new_items
 
     def save_data(self):

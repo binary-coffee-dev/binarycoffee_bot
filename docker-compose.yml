@@ -1,0 +1,16 @@
+version: "3.4"
+
+services:
+  binary_coffee:
+    container_name: bot_telegram
+    build:
+      context: .
+      args:
+        - CHANNEL=${CHANNEL}
+        - TOKEN=${TOKEN}
+        - RSS_FEED=${RSS_FEED}
+        - REFRESH_TIME=${REFRESH_TIME}
+        - DATA_ADAPTER=${DATA_ADAPTER}
+    restart: always
+    volumes:
+      - $DATA_PATH:/home/data

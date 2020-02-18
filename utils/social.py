@@ -1,10 +1,10 @@
-import os
 import telegram
 
+
 class Telegram:
-    def __init__(self):
-        self.token = os.environ['TOKEN']
-        self.chat_id = os.environ['CHANNEL']
+    def __init__(self, token, channel_id):
+        self.token = token
+        self.chat_id = channel_id
 
     def post(self, msg):
         bot = telegram.Bot(token=self.token)

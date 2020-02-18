@@ -1,58 +1,34 @@
-from social import Telegram
 import os
 import time
 import requests
 import json
 
-REFRESH_TIME = 60
+from utils.social import Telegram
+from utils.data import get_data_adapter
+
+# ENVIRONMENT VARIABLES
+REFRESH_TIME = os.environ.get('REFRESH_TIME') if os.environ.get('REFRESH_TIME') else 60
+RSS_FEED = os.environ.get('RSS_FEED')
+TOKEN = os.environ.get('TOKEN')
+CHANNEL = os.environ.get('CHANNEL')
+DATA_PATH = os.environ.get('DATA_PATH') if\
+    os.environ.get('DATA_PATH') else\
+    os.path.join(os.path.dirname(__file__), 'data')
+DATA_ADAPTER = os.environ.get('DATA_ADAPTER') if os.environ.get('DATA_ADAPTER') else 'JsonData'
 
 
-def load_data():
-    try:
-        file = open('data.json', 'r')
-        data = file.read().replace("'", '"')
-        if len(data) > 0:
-            ret = json.loads(data)
-        file.close()
-    except:
-        file = open('data.json', 'w+')
-        file.close()
-    ret = []
-
-    return ret
-
-
-def save():
-    with open('data.json', 'w+') as database:
-        database.write(str(last_posts))
-
-
-last_posts = load_data()
-telegram_channel = Telegram()
-
-
-def post(msg):
-    telegram_channel.post(msg)
+# INITIALIZING COMPONENTS
+data_adapter = get_data_adapter(data_path=DATA_PATH, strategy=DATA_ADAPTER)
+telegram_channel = Telegram(token=TOKEN, channel_id=CHANNEL)
 
 
 while True:
-    try:
-        data = requests.get(os.environ['RSS_FEED'])
-        posts = json.loads(data._content)
+    data = requests.get(RSS_FEED)
+    content = json.loads(data.content)
 
-        if last_posts == []:
-            for i in posts['items']:
-                post('{}\n{}'.format(i['summary'], i['url']))
-
-        elif posts != last_posts:
-            for i in posts['items']:
-                if i not in last_posts['items']:
-                    post('{}\n{}'.format(i['summary'], i['url']))
-
-        if posts != last_posts:
-            last_posts = posts
-            save()
-    except:
-        pass
+    new_posts = data_adapter.add_and_get_new_items(items=content['items'])
+    if len(new_posts) > 0:
+        for i in new_posts:
+            telegram_channel.post('{}\n{}'.format(i['summary'], i['url']))
 
     time.sleep(REFRESH_TIME)

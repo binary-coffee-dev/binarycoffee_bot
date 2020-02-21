@@ -1,4 +1,5 @@
 from os import path
+from pathlib import Path
 
 import json
 
@@ -19,6 +20,10 @@ class JsonAdapter(DataAdapter):
         for i in range(len(self.data)):
             it = self.data[i]
             self.data_map[it['id']] = i
+
+    @staticmethod
+    def check_path(path_name):
+        Path(path_name).mkdir(parents=True, exist_ok=True)
 
     def add_and_get_new_items(self, items=None):
         if items is None:

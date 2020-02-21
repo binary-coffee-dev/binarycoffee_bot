@@ -8,10 +8,13 @@
 
 * `CHANNEL`: your channel user **@channel**
 * `TOKEN`: your bot token, you can see [this post](https://binary-coffee.dev/post/como-hacer-un-bot-de-telegram-desde-cero-con-python)
-* `RSS_FEED`: Url of a JSON feed of your blog.
-* `REFRESH_TIME`: Time to wait until the check for new items
-* `DATA_ADAPTER`: Type of adapter used to save the data. Example: `JsonAdapter`
-* `DATA_PATH`: (**JsonAdapter**) In case of use JsonAdapter, you can decide where to save the file. By default it's save in `./data` in the project directory.
+* `RSS_FEED`: URL of the JSON feed of your blog. example `https://api.binary-coffee.dev/posts/feed/json1`
+* `REFRESH_TIME`: interval of time to check for new items. default `60`
+* `DATA_ADAPTER`: type of adapter used to save the data. example `JsonAdapter`|`MongodbAdapter`
+* `DATA_PATH`: (**JsonAdapter**) in case of use JsonAdapter, you can decide where to save the file. default `./data`.
+* `DATABASE_HOST`: (**MongodbAdapter**) host for your mongodb database. default `localhost`
+* `DATABASE_PORT`: (**MongodbAdapter**) port for your mongodb database. default `27017`
+* `DATABASE_NAME`: (**MongodbAdapter**) database name. default `bc_db`
 
 ### Steps to start the bot
 

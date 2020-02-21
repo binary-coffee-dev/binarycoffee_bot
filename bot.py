@@ -7,7 +7,7 @@ from utils.social import Telegram
 from utils.data import get_data_adapter
 
 # ENVIRONMENT VARIABLES
-REFRESH_TIME = os.environ.get('REFRESH_TIME') if os.environ.get('REFRESH_TIME') else 60
+REFRESH_TIME = int(os.environ.get('REFRESH_TIME')) if os.environ.get('REFRESH_TIME') else 60
 RSS_FEED = os.environ.get('RSS_FEED')
 TOKEN = os.environ.get('TOKEN')
 CHANNEL = os.environ.get('CHANNEL')

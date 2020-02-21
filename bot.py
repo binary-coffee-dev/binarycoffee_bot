@@ -31,6 +31,8 @@ while True:
         for i in new_posts:
             # toDo: remove this when backend be fixed
             url = i['url'].replace('api.binary-coffee.dev', 'binary-coffee.dev')
-            telegram_channel.post('{}\n{}'.format(i['summary'], url))
+            summary = i.get('summary') if i.get('summary') is not None else\
+                i.get('title') if i.get('title') is not None else ''
+            telegram_channel.post('{}\n{}'.format(summary, url))
 
     time.sleep(REFRESH_TIME)

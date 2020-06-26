@@ -9,8 +9,4 @@ services:
         - CHANNEL=${CHANNEL}
         - TOKEN=${TOKEN}
         - RSS_FEED=${RSS_FEED}
-        - REFRESH_TIME=${REFRESH_TIME}
-        - DATA_ADAPTER=${DATA_ADAPTER}
     restart: always
-    volumes:
-      - $DATA_PATH:/home/data

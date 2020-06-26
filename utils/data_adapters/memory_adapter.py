@@ -14,13 +14,12 @@ class MemoryAdapter(DataAdapter):
             if self.data_map.get(it['id'], -1) == -1:
                 new_items.append(it)
 
-        if len(self.data) > 0:
-            self.data = items
-            self.calculate_data_map()
-        else:
-            self.data = items
-            return []
+        is_first_data = len(self.data) == 0
+        self.data = items
+        self.calculate_data_map()
 
+        if is_first_data:
+            return []
         new_items.sort(key=lambda item: item['date_modified'], reverse=False)
         return new_items
 

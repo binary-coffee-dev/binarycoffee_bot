@@ -10,7 +10,7 @@
 * `TOKEN`: your bot token, you can see [this post](https://binary-coffee.dev/post/como-hacer-un-bot-de-telegram-desde-cero-con-python)
 * `RSS_FEED`: URL of the JSON feed of your blog. example `https://api.binary-coffee.dev/posts/feed/json1`
 * `REFRESH_TIME`: interval of time to check for new items. default `60`
-* `DATA_ADAPTER`: type of adapter used to save the data. example `JsonAdapter`|`MongodbAdapter`
+* `DATA_ADAPTER`: type of adapter used to save the data. example `MemoryAdapter`|`JsonAdapter`|`MongodbAdapter`
 * `DATA_PATH`: (**JsonAdapter**) in case of use JsonAdapter, you can decide where to save the file. default `./data`.
 * `DATABASE_HOST`: (**MongodbAdapter**) host for your mongodb database. default `localhost`
 * `DATABASE_PORT`: (**MongodbAdapter**) port for your mongodb database. default `27017`

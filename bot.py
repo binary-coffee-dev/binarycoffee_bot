@@ -12,7 +12,7 @@ RSS_FEED = os.environ.get('RSS_FEED')
 TOKEN = os.environ.get('TOKEN')
 CHANNEL = os.environ.get('CHANNEL')
 
-DATA_ADAPTER = os.environ.get('DATA_ADAPTER') if os.environ.get('DATA_ADAPTER') else 'JsonAdapter'
+DATA_ADAPTER = os.environ.get('DATA_ADAPTER') if os.environ.get('DATA_ADAPTER') else 'MemoryAdapter'
 DATA_PATH = os.environ.get('DATA_PATH') if\
     os.environ.get('DATA_PATH') else\
     os.path.join(os.path.dirname(__file__), 'data')

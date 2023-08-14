@@ -1,11 +1,11 @@
-import telegram
+from utils.socials.telegram_social import TelegramAdapter
+from utils.socials.twitter_social import TwitterAdapter
 
 
-class Telegram:
-    def __init__(self, token, channel_id):
-        self.token = token
-        self.chat_id = channel_id
+class Socials:
+    def __init__(self):
+        self.socials = [TelegramAdapter(), TwitterAdapter()]
 
     def post(self, msg):
-        bot = telegram.Bot(token=self.token)
-        bot.sendMessage(chat_id=self.chat_id, text=msg)
+        for social in self.socials:
+            social.post(msg)

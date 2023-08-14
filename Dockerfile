@@ -11,4 +11,6 @@ RUN pip3 install -r requirements.txt
 COPY utils ./utils
 COPY bot.py .env start.sh ./
 
+ENV DATA_PATH=/data
+
 CMD ["/bin/sh", "start.sh"]

@@ -5,8 +5,6 @@ services:
     container_name: bot_telegram
     build:
       context: .
-      args:
-        - CHANNEL=${CHANNEL}
-        - TOKEN=${TOKEN}
-        - RSS_FEED=${RSS_FEED}
+    volumes:
+      - $DATA_PATH_HOST:/data
     restart: always

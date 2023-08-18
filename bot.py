@@ -28,7 +28,13 @@ data_adapter = get_data_adapter(data_path=DATA_PATH,
 socials = Socials()
 
 while True:
-    data = requests.get(RSS_FEED)
+    try:
+        data = requests.get(RSS_FEED)
+    except:
+        time.sleep(REFRESH_TIME)
+        print("Fail to request RSS from url: {}".format(RSS_FEED))
+        continue
+
     content = json.loads(data.content)
 
     new_posts = data_adapter.add_and_get_new_items(items=content.get('items'))

@@ -30,9 +30,9 @@ socials = Socials()
 while True:
     try:
         data = requests.get(RSS_FEED)
-    except:
+    except Exception as err:
+        print("Fail to request RSS from url: {}\nError: {}".format(RSS_FEED, err))
         time.sleep(REFRESH_TIME)
-        print("Fail to request RSS from url: {}".format(RSS_FEED))
         continue
 
     content = json.loads(data.content)

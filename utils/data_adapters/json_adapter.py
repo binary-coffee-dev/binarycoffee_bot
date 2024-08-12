@@ -41,15 +41,16 @@ class JsonAdapter(DataAdapter):
 
     def save_data(self):
         with open(self.data_storage_path, 'w+') as database:
-            database.write(str(self.data))
+            database.write(json.dumps(self.data))
 
     def load_data(self):
         self.data = []
         try:
             file = open(self.data_storage_path, 'r')
-            data = file.read().replace("'", '"')
+            data = file.read()
             if len(data) > 0:
                 self.data = json.loads(data)
             file.close()
         except:
+            print("Fail to load data from file: {}".format(self.data_storage_path))
             pass

@@ -2,7 +2,7 @@ version: "3.4"
 
 services:
   binary_coffee:
-    container_name: bot_telegram
+    container_name: bc_rss_bot
     build:
       context: .
     volumes:
